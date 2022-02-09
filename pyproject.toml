@@ -3,6 +3,12 @@ name = "news-data-scraper"
 version = "0.1.0"
 description = "A data scraper that takes in urls and produces a formatted word document"
 authors = ["Fabian Schomerus"]
+packages = [
+    { include = "cli" }
+]
+
+[tool.poetry.scripts]
+data-scraper = 'cli.run_data_scraper:main'
 
 [tool.poetry.dependencies]
 python = "^3.8"
