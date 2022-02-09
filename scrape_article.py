@@ -1,8 +1,23 @@
+import logging
+import math
+
 from newspaper import Article
 
 from document_edits.add_article_text import add_article_text
 from document_edits.add_title_source_date import add_title_source_date
 from document_edits.add_hyperlink import add_hyperlink
+
+
+def scrape_all_urls(urls, document):
+    for url in urls:
+        # sorts out empty table entries within excel, useful when no. of rows for R&N and CGA are not equal.
+        if isinstance(url, str):
+            scrape_article_for_email(url, document)
+        elif math.isnan(url) == True:
+            logging.info("Cell contains no link")
+        else:
+            logging.error("Input Url was neither a string or NaN")
+    pass
 
 
 def scrape_article_for_email(url, document):
