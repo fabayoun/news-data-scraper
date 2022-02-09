@@ -66,9 +66,7 @@ def add_title_source_date(title, url, date, document, article_download_state):
     # splits url into list and takes useful source snippet by identifying list item before "co", "com", or "org"
     # e.g takes XXX in www.XXX.com
     if "http" in url:
-        # split into  list
         source_split = re.split("[/.]", url)
-        # identify list item before "co", "com", "org" or "net"
         if "co" in source_split:
             n = source_split.index("co")
             check_source = source_split[n-1]
@@ -86,9 +84,8 @@ def add_title_source_date(title, url, date, document, article_download_state):
     else:
         check_source = url
 
-    # checks if url exists in source dictionary
     if check_source in dict_source:
-        # if url exists in dictionary, add source
+        # add source
         url_s = dict_source[check_source]
         t_source = t.add_run(f" ({url_s}")
         t_source.font.name = 'Calibri'
