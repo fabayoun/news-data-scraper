@@ -4,7 +4,7 @@
 
 # Hidden directories
 .*/
-Output/
+/Output/
 
 # FuelPHP
 /fuel/vendor
@@ -122,6 +122,7 @@ env.bak/
 venv.bak/
 /site
 cython_debug/
+/Output/
 
 # VVVV
 bin/
