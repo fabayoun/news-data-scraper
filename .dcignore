@@ -4,6 +4,7 @@
 
 # Hidden directories
 .*/
+Output/
 
 # FuelPHP
 /fuel/vendor
