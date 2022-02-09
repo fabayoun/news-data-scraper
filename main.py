@@ -15,9 +15,9 @@ DIRECTORY_ROOT = Path(__file__).parent
 INPUT_URL = "Input/DataScraperINPUT.xlsx"
 
 
-def data_scraper():
+def data_scraper(run_cga):
     """
-    Create Word Document for R&N News Round. Takes url inputs from excel, scrapes title, date and 1st 3 sentences
+    Web scraper that creates a word document from url inputs in excel, scrapes title, date and 1st 3 sentences
     :return: document
     """
     setup_logging()
@@ -39,14 +39,15 @@ def data_scraper():
     # add R&N podcast and news website links, and break line
     add_rn_podcast_and_website_links(document)
 
-    # add CGA Heading and author
-    add_cga_heading_author(document)
+    if run_cga:
+        # add CGA Heading and author
+        add_cga_heading_author(document)
 
-    # run loop to scrape article for each url in CGA dictionary
-    scrape_all_urls(urls_cga, document)
+        # run loop to scrape article for each url in CGA dictionary
+        scrape_all_urls(urls_cga, document)
 
-    # add podcast and news website links, and break line
-    add_cga_podcast_and_website_links(document)
+        # add podcast and news website links, and break line
+        add_cga_podcast_and_website_links(document)
 
     # Save document with new version number and current date
     # determine current date and turn into string
