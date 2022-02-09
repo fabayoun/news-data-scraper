@@ -5,6 +5,7 @@ import logging
 import pandas as pd
 from docx import Document
 
+from config_logger import setup_logging
 from document_edits.add_page_headers import add_rn_heading, add_cga_heading_author
 from document_edits.add_podcasts_and_websites import add_rn_podcast_and_website_links, add_cga_podcast_and_website_links
 from scrape_article import scrape_all_urls
@@ -19,6 +20,7 @@ def data_scraper():
     Create Word Document for R&N News Round. Takes url inputs from excel, scrapes title, date and 1st 3 sentences
     :return: document
     """
+    setup_logging()
 
     # read excel and create dictionaries of R&N and CGA urls which will be scraped
     input_url_df = pd.read_excel(DIRECTORY_ROOT / INPUT_URL, sheet_name=0)
@@ -48,7 +50,7 @@ def data_scraper():
 
     # Save document with new version number and current date
     # determine current date and turn into string
-    now = datetime.datetime.now().strftime('%Y_%m_%d %Hh%Mm')
+    now = datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')
 
     # save file
     output_file_name = f"{OUTPUT_FILE_NAME}_{now}.docx"
