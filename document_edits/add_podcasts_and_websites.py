@@ -4,87 +4,98 @@ from document_edits.add_horizontal_break import add_page_break
 from document_edits.add_hyperlink import add_hyperlink
 
 
-# --------------------------- Podcast and Website Links ------------------------------- #
+energy_news_dict = {
+    "Utility Week": r"https://utilityweek.co.uk/",
+    "Current-News": r"https://www.current-news.co.uk/",
+    "New Power": r"https://www.newpower.info/category/news/",
+    "Smart Energy": r"https://www.smart-energy.com/",
+    "Green Tech Media": r"https://www.greentechmedia.com/",
+    "Networks Online": r"https://networks.online/",
+    "Water Briefing": r"https://www.waterbriefing.org/",
+    "Water Online": r"https://www.wateronline.com/",
+}
+energy_podcasts_dict = {
+    "GTM: The Energy Gang": r"https://www.greentechmedia.com/podcast/the-energy-gang",
+    "GTM: The Interchange": r"https://www.greentechmedia.com/podcast/the-interchange#gs.mJy36kyT",
+    "Redefining Energy": r"https://player.fm/series/redefining-energy",
+    "Delta Energy Environment": r"https://www.delta-ee.com/TalkingNewEnergy?_cldee=aGFycnkudGF5bG9yQGJhcmluZ2EuY29t&recipientid=contact-945bce7387bce61180ddf4d04bee4450-54ffb43a590b4b7db9e5d77716ddeff1&esid=ca1bc5af-d14f-e911-80e7-ef9585e40074",
+    "Talking New Energy": r"https://www.delta-ee.com/TalkingNewEnergy?_cldee=d3RrMzQzQGFvbC5jb20%3d&recipientid=contact-8652e76380a3e71180dffdb8b794821f-7681b9488773437cbea4592f91279093&esid=7b4eaa72-d270-e911-80e7-ef9585e40074",
+    "Spotify Talking New Energy": r"https://open.spotify.com/episode/4wqNzmaSozqVjukUgtBsP1?si=3BG654-IQW21-1Otgi2ktw",
+}
+cga_news_dict = {
+    "Civil Service World": r"https://www.civilserviceworld.com/",
+    "Institute for Government": r"https://www.instituteforgovernment.org.uk/",
+}
+cga_podcasts_dict = {
+    "Times Red Box": r"https://soundcloud.com/times-comment",
+    "BBC Brexitcast": r"https://www.bbc.co.uk/programmes/p05299nl/episodes/player",
+    "FT Politics": r"https://www.ft.com/uk-politics-podcast",
+    "One Team Gov": r"https://www.oneteamgov.uk/podcast",
+}
 
-###Add R&N podcast and website links
 
-def add_RN_podcast_and_website_links(document):
-    links = document.add_paragraph()
-    ##Add "Energy News: "
-    links_l = links.add_run("Energy News: ")
-    links_l.font.size = Pt(11)
-    links_l.font.name = 'Calibri'
-    links_l.bold = True
+def add_rn_podcast_and_website_links(document):
+    """
+    Add R&N podcast and website links
+    :param document: document object to be edited
+    :return: edited document
+    """
+    # Add "Energy News: "
+    energy_news_header_para = document.add_paragraph()
+    energy_news_header = energy_news_header_para.add_run("Energy News: ")
+    energy_news_header.font.size = Pt(11)
+    energy_news_header.font.name = 'Calibri'
+    energy_news_header.bold = True
 
-    ##Add Energy News Links
-    add_hyperlink(links, "Utility Week", "https://utilityweek.co.uk/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Current-News", "https://www.current-news.co.uk/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "New Power", "https://www.newpower.info/category/news/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Smart Energy", "https://www.smart-energy.com/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Green Tech Media", "https://www.greentechmedia.com/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Networks Online", "https://networks.online/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Water Briefing", "https://www.waterbriefing.org/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Water Online", "https://www.wateronline.com/")
+    for name, url in energy_news_dict.items():
+        add_hyperlink(energy_news_header_para, name, url)
+        energy_news_header_para.add_run(" // ")
 
-    ##Add "Energy Podcasts: "
-    links = document.add_paragraph()
-    links_l = links.add_run("Energy Podcasts: ")
-    links_l.font.size = Pt(11)
-    links_l.font.name = 'Calibri'
-    links_l.bold = True
+    # Add "Energy Podcasts: "
+    energy_podcasts_para = document.add_paragraph()
+    energy_podcasts = energy_podcasts_para.add_run("Energy Podcasts: ")
+    energy_podcasts.font.size = Pt(11)
+    energy_podcasts.font.name = 'Calibri'
+    energy_podcasts.bold = True
 
-    ##Add Energy Podcasts Links
-    add_hyperlink(links, "GTM: The Energy Gang", "https://www.greentechmedia.com/podcast/the-energy-gang")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "GTM: The Interchange", "https://www.greentechmedia.com/podcast/the-interchange#gs.mJy36kyT")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Redefining Energy", "https://player.fm/series/redefining-energy")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Delta Energy Environment", "https://www.delta-ee.com/TalkingNewEnergy?_cldee=aGFycnkudGF5bG9yQGJhcmluZ2EuY29t&recipientid=contact-945bce7387bce61180ddf4d04bee4450-54ffb43a590b4b7db9e5d77716ddeff1&esid=ca1bc5af-d14f-e911-80e7-ef9585e40074")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Talking New Energy", "https://www.delta-ee.com/TalkingNewEnergy?_cldee=d3RrMzQzQGFvbC5jb20%3d&recipientid=contact-8652e76380a3e71180dffdb8b794821f-7681b9488773437cbea4592f91279093&esid=7b4eaa72-d270-e911-80e7-ef9585e40074")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Talking New Energy", "https://open.spotify.com/episode/4wqNzmaSozqVjukUgtBsP1?si=3BG654-IQW21-1Otgi2ktw")
+    # Add Energy Podcasts Links
+    for name, url in energy_podcasts_dict.items():
+        add_hyperlink(energy_podcasts_para, name, url)
+        energy_podcasts_para.add_run(" // ")
 
-    ##add page break line underneath podcast links
-    add_page_break(links)
+    add_page_break(energy_podcasts_para)
+    pass
 
-###Add CGA podcast and website links
-def add_CGA_podcast_and_website_links(document):
-    ##Add "CGA News: "
-    links = document.add_paragraph()
-    links_l = links.add_run("CGA News: ")
-    links_l.font.size = Pt(11)
-    links_l.font.name = 'Calibri'
-    links_l.bold = True
 
-    ##Add CGA News links
-    add_hyperlink(links, "Civil Service World", "https://www.civilserviceworld.com/")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "Institute for Government", "https://www.instituteforgovernment.org.uk/")
+def add_cga_podcast_and_website_links(document):
+    """
+    Add CGA podcast and website links
+    :param document: document object to be edited
+    :return: edited document
+    """
+    # Add "CGA News: "
+    cga_news_header_para = document.add_paragraph()
+    cga_news_header = cga_news_header_para.add_run("CGA News: ")
+    cga_news_header.font.size = Pt(11)
+    cga_news_header.font.name = 'Calibri'
+    cga_news_header.bold = True
 
-    ##Add "CGA Podcasts: "
-    links = document.add_paragraph()
-    links_l = links.add_run("CGA Podcasts: ")
-    links_l.font.size = Pt(11)
-    links_l.font.name = 'Calibri'
-    links_l.bold = True
+    # Add CGA News links
+    for name, url in cga_news_dict.items():
+        add_hyperlink(cga_news_header_para, name, url)
+        cga_news_header_para.add_run(" // ")
 
-    ##Add CGA Podcast links
-    add_hyperlink(links, "Times Red Box", "https://soundcloud.com/times-comment")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "BBC Brexitcast", "https://www.bbc.co.uk/programmes/p05299nl/episodes/player")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "FT Politics", "https://www.ft.com/uk-politics-podcast")
-    links_l = links.add_run(" // ")
-    add_hyperlink(links, "One Team Gov", "https://www.oneteamgov.uk/podcast")
+    # Add "CGA Podcasts: "
+    cga_podcast_header_para = document.add_paragraph()
+    cga_podcast_header = cga_podcast_header_para.add_run("CGA Podcasts: ")
+    cga_podcast_header.font.size = Pt(11)
+    cga_podcast_header.font.name = 'Calibri'
+    cga_podcast_header.bold = True
 
-    ##add page break after CGA links
-    add_page_break(links)
+    # Add CGA Podcast links
+    for name, url in cga_podcasts_dict.items():
+        add_hyperlink(cga_podcast_header_para, name, url)
+        cga_podcast_header_para.add_run(" // ")
+
+    add_page_break(cga_podcast_header_para)
+    pass

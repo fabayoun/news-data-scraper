@@ -2,6 +2,7 @@ import docx
 from docx.shared import Pt
 from docx.oxml import OxmlElement
 from docx.enum.dml import MSO_THEME_COLOR_INDEX
+from docx.opc import constants
 
 
 def add_hyperlink(paragraph, text, url):
@@ -22,10 +23,10 @@ def add_hyperlink(paragraph, text, url):
 
     # Create a w:r element and a new w:rPr element
     new_run = docx.oxml.shared.OxmlElement('w:r')
-    rPr = docx.oxml.shared.OxmlElement('w:rPr')
+    r_pr = docx.oxml.shared.OxmlElement('w:rPr')
 
     # Join all the xml elements together add add the required text to the w:r element
-    new_run.append(rPr)
+    new_run.append(r_pr)
     new_run.text = text
     hyperlink.append(new_run)
 
@@ -39,5 +40,4 @@ def add_hyperlink(paragraph, text, url):
     r.font.underline = True
     r.font.name = 'Calibri'
     r.font.size = Pt(11)
-
     return hyperlink

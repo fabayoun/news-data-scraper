@@ -5,8 +5,8 @@ import logging
 import pandas as pd
 from docx import Document
 
-from document_edits.add_page_headers import add_RN_heading, add_CGA_heading_author
-from document_edits.add_podcasts_and_websites import add_RN_podcast_and_website_links, add_CGA_podcast_and_website_links
+from document_edits.add_page_headers import add_rn_heading, add_cga_heading_author
+from document_edits.add_podcasts_and_websites import add_rn_podcast_and_website_links, add_cga_podcast_and_website_links
 from scrape_article import scrape_all_urls
 
 OUTPUT_FILE_NAME = "Output/NewsDataScraperOutput"
@@ -29,22 +29,22 @@ def data_scraper():
     document = Document()
 
     # add R&N Heading
-    add_RN_heading(document)
+    add_rn_heading(document)
 
     # run loop to scrape article for each url in R&N dictionary
     scrape_all_urls(urls_rn, document)
 
     # add R&N podcast and news website links, and break line
-    add_RN_podcast_and_website_links(document)
+    add_rn_podcast_and_website_links(document)
 
     # add CGA Heading and author
-    add_CGA_heading_author(document)
+    add_cga_heading_author(document)
 
     # run loop to scrape article for each url in CGA dictionary
     scrape_all_urls(urls_cga, document)
 
     # add podcast and news website links, and break line
-    add_CGA_podcast_and_website_links(document)
+    add_cga_podcast_and_website_links(document)
 
     # Save document with new version number and current date
     # determine current date and turn into string

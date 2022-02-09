@@ -1,31 +1,38 @@
 from docx.shared import Pt
 
-###Add CGA Heading and Author
-def add_CGA_heading_author(document):
-    ##dd space before Heading
-    space = document.add_paragraph()
 
-    ##Add CGA Heading
-    h_CGA = document.add_paragraph()
-    h_CGA_h = h_CGA.add_run("Central Governments Advisory")
-    h_CGA_h.font.size = Pt(15)
-    h_CGA_h.font.name = 'Calibri'
-    h_CGA_h.bold = True
+def add_cga_heading_author(document):
+    """
+    Add CGA Heading and Author
+    :param document: document object to be edited
+    :return: edited document
+    """
+    document.add_paragraph()
 
-    ##Add CGA Author
-    h_CGA_a = document.add_paragraph()
-    h_CGA_a_a = h_CGA_a.add_run("By Harry Allport & Rhiannon Evans")
-    h_CGA_a_a.font.size = Pt(11)
-    h_CGA_a_a.font.name = 'Calibri'
+    # Add CGA Heading
+    header_cga = document.add_paragraph().add_run("Central Governments Advisory")
+    header_cga.font.size = Pt(15)
+    header_cga.font.name = 'Calibri'
+    header_cga.bold = True
 
-    ##Add CGA Heading
-    space = document.add_paragraph()
+    # Add CGA Author
+    author_cga = document.add_paragraph().add_run("By Harry Allport & Rhiannon Evans")
+    author_cga.font.size = Pt(11)
+    author_cga.font.name = 'Calibri'
+
+    # Add CGA Heading
+    document.add_paragraph()
 
 
-def add_RN_heading(document):
-    h_RN = document.add_paragraph()
-    h_RN_h = h_RN.add_run("Retail & Networks")
-    h_RN_h.font.size = Pt(15)
-    h_RN_h.font.name = 'Calibri'
-    h_RN_h.bold = True
-    space = document.add_paragraph()
+def add_rn_heading(document):
+    """
+    Add R&N Heading and Author
+    :param document: document object to be edited
+    :return: edited document
+    """
+    h_rn_h = document.add_paragraph().add_run("Retail & Networks")
+    h_rn_h.font.size = Pt(15)
+    h_rn_h.font.name = 'Calibri'
+    h_rn_h.bold = True
+    document.add_paragraph()
+    pass
