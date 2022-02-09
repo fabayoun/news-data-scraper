@@ -1,8 +1,8 @@
 import contextlib
 import logging
-from typing import Optional
 
 logger = logging.getLogger(__name__)
+
 
 @contextlib.contextmanager
 def common_error_handling() -> None:
