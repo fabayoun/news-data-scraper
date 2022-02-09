@@ -7,7 +7,7 @@ from docx import Document
 
 from document_edits.add_page_headers import add_RN_heading, add_CGA_heading_author
 from document_edits.add_podcasts_and_websites import add_RN_podcast_and_website_links, add_CGA_podcast_and_website_links
-from scrape_article import scrape_article_for_email, scrape_all_urls
+from scrape_article import scrape_all_urls
 
 OUTPUT_FILE_NAME = "Output/NewsDataScraperOutput"
 DIRECTORY_ROOT = Path(__file__).parent
