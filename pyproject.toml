@@ -17,6 +17,7 @@ newspaper3k = "^0.2.8"
 pandas = "^1.4.0"
 python-docx = "^0.8.11"
 openpyxl = "^3.0.9"
+docx = "^0.2.4"
 
 [tool.poetry.dev-dependencies]
 
