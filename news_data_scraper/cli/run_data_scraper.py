@@ -1,17 +1,17 @@
 import click
 
-from cli.generic_errors import common_error_handling
-from main import data_scraper
+from news_data_scraper.cli.generic_errors import common_error_handling
+from news_data_scraper.main import data_scraper
 
-CGA_DEFAULT = True
+_CGA_DEFAULT = True
 
 
 @click.command()
 @click.option(
     "--run-cga",
-    default=CGA_DEFAULT,
+    default=_CGA_DEFAULT,
 )
-def run_data_scraper(run_cga):
+def run_data_scraper(run_cga: bool) -> None:
     """
     Web scraper that creates a word document from url inputs in excel, scrapes title, date and 1st 3 sentences
     """

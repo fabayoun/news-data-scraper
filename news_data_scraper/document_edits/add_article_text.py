@@ -1,7 +1,7 @@
 import re
 from docx.shared import Pt
 
-from document_edits.article_download_state import ArticleDownloadState
+from news_data_scraper.document_edits.article_download_state import ArticleDownloadState
 
 
 def add_article_text(sentences, document, article_download_state):
