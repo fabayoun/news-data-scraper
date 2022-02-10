@@ -3,10 +3,10 @@ import math
 
 from newspaper import Article
 
-from document_edits.add_article_text import add_article_text
-from document_edits.add_title_source_date import add_title_source_date
-from document_edits.add_hyperlink import add_hyperlink
-from document_edits.article_download_state import ArticleDownloadState
+from news_data_scraper.document_edits.add_article_text import add_article_text
+from news_data_scraper.document_edits.add_title_source_date import add_title_source_date
+from news_data_scraper.document_edits.add_hyperlink import add_hyperlink
+from news_data_scraper.document_edits.article_download_state import ArticleDownloadState
 
 
 def scrape_all_urls(urls, document):

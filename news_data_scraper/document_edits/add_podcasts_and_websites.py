@@ -1,7 +1,7 @@
 from docx.shared import Pt
 
-from document_edits.add_horizontal_break import add_page_break
-from document_edits.add_hyperlink import add_hyperlink
+from news_data_scraper.document_edits.add_horizontal_break import add_page_break
+from news_data_scraper.document_edits.add_hyperlink import add_hyperlink
 
 
 energy_news_dict = {

@@ -1,7 +1,7 @@
 import re
 from docx.shared import Pt, RGBColor
 
-from document_edits.article_download_state import ArticleDownloadState
+from news_data_scraper.document_edits.article_download_state import ArticleDownloadState
 
 # dictionary which defines source, based on url. Useful for creating formatted source
 dict_source = {
