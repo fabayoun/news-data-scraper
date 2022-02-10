@@ -10,9 +10,9 @@ from news_data_scraper.document_edits.add_page_headers import add_rn_heading, ad
 from news_data_scraper.document_edits.add_podcasts_and_websites import add_rn_podcast_and_website_links, add_cga_podcast_and_website_links
 from scrape_article import scrape_all_urls
 
-OUTPUT_FILE_NAME = "Output/NewsDataScraperOutput"
+OUTPUT_FILE_NAME = "output/NewsDataScraperOutput"
 DIRECTORY_ROOT = Path(__file__).parent.parent
-INPUT_URL = "Input/DataScraperINPUT.xlsx"
+INPUT_URL = "input/DataScraperINPUT.xlsx"
 
 
 def data_scraper(run_cga: bool) -> None:

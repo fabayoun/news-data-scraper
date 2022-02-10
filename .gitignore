@@ -28,7 +28,7 @@ env.bak/
 venv.bak/
 /site
 cython_debug/
-/Output/
+/output/
 
 
 # Ignore hidden files

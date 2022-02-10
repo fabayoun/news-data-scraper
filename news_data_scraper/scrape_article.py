@@ -17,7 +17,7 @@ def scrape_all_urls(urls, document):
         elif math.isnan(url):
             logging.info("Cell contains no link")
         else:
-            logging.error("Input was neither a url string or NaN")
+            logging.error("input was neither a url string or NaN")
     pass
 
 
