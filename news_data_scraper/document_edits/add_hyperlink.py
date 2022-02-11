@@ -5,7 +5,7 @@ from docx.enum.dml import MSO_THEME_COLOR_INDEX
 from docx.opc import constants
 
 
-def add_hyperlink(paragraph, text, url):
+def add_hyperlink(paragraph, text: str, url: str) -> None:
     """
     Adds text with a hyperlink to the paragraph above function
     :param paragraph: paragraph under which a hyperlink should be added
