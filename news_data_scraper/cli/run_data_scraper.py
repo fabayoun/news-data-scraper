@@ -18,6 +18,6 @@ def run_data_scraper(run_cga: bool) -> None:
     return data_scraper(run_cga)
 
 
-def main():
+def main() -> None:
     with common_error_handling():
         run_data_scraper()

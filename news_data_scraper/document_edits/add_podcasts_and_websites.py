@@ -10,6 +10,7 @@ def add_podcast_and_website_links(document: Document, section: NewsSection) -> N
     """
     Add R&N podcast and website links
     :param document: document object to be edited
+    :param section: news section which we are adding podcast and website links for
     :return: edited document
     """
     news_header_para = document.add_paragraph()
