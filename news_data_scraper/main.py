@@ -18,7 +18,7 @@ DIRECTORY_ROOT = Path(__file__).parent.parent
 INPUT_URL = "input/DataScraperINPUT.xlsx"
 
 
-def data_scraper(run_cga: bool) -> None:
+def document_creator(run_cga: bool) -> None:
     """
     Web scraper that creates a word document from url inputs in excel, scrapes title, date and 1st 3 sentences
     :return: document
@@ -68,4 +68,4 @@ def create_document_contents(run_cga: bool) -> NewsDocument:
 
 
 if __name__ == '__main__':
-    data_scraper(run_cga=True)
+    document_creator(run_cga=True)
