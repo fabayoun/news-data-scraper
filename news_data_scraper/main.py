@@ -6,9 +6,12 @@ import pandas as pd
 from docx import Document
 
 from config_logger import setup_logging
-from news_data_scraper.document_edits.add_page_headers import add_rn_heading, add_cga_heading_author
-from news_data_scraper.document_edits.add_podcasts_and_websites import add_rn_podcast_and_website_links, add_cga_podcast_and_website_links
-from scrape_article import scrape_all_urls
+from news_data_scraper.document_edits.format_document import format_document
+from news_data_scraper.other_document_features.document_feature_classes import BusinessUnitHeader, NewsDocument, \
+    NewsSection
+from news_data_scraper.other_document_features.store_website_links import store_podcast_and_website_links
+from news_data_scraper.scraper.bu_tags import BuTag
+from news_data_scraper.scraper.scrape_article import scrape_all_urls
 
 OUTPUT_FILE_NAME = "output/NewsDataScraperOutput"
 DIRECTORY_ROOT = Path(__file__).parent.parent
@@ -23,37 +26,15 @@ def data_scraper(run_cga: bool) -> None:
     setup_logging()
 
     # read excel and create dictionaries of R&N and CGA urls which will be scraped
-    input_url_df = pd.read_excel(DIRECTORY_ROOT / INPUT_URL, sheet_name=0)
-    urls_rn = input_url_df['RN News'].to_list()
-    urls_cga = input_url_df['CGA News'].to_list()
+    document_contents = create_document_contents(run_cga)
 
-    # Create document object from class to create a new word document for article summaries
+    # Create word document
     document = Document()
+    format_document(document, document_contents)
 
-    # add R&N Heading
-    add_rn_heading(document)
-
-    # run loop to scrape article for each url in R&N dictionary
-    scrape_all_urls(urls_rn, document)
-
-    # add R&N podcast and news website links, and break line
-    add_rn_podcast_and_website_links(document)
-
-    if run_cga:
-        # add CGA Heading and author
-        add_cga_heading_author(document)
-
-        # run loop to scrape article for each url in CGA dictionary
-        scrape_all_urls(urls_cga, document)
-
-        # add podcast and news website links, and break line
-        add_cga_podcast_and_website_links(document)
 
     # Save document with new version number and current date
-    # determine current date and turn into string
     now = datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')
-
-    # save file
     output_file_name = f"{OUTPUT_FILE_NAME}_{now}.docx"
     file_path_email = f"{DIRECTORY_ROOT}/{output_file_name}"
     document.save(file_path_email)
@@ -61,5 +42,31 @@ def data_scraper(run_cga: bool) -> None:
     pass
 
 
+def create_document_contents(run_cga: bool) -> NewsDocument:
+    input_url_df = pd.read_excel(DIRECTORY_ROOT / INPUT_URL, sheet_name=0)
+    urls_rn = input_url_df['RN News'].to_list()
+    urls_cga = input_url_df['CGA News'].to_list()
+
+    rn_bu_tag = BuTag.ER_RN
+    rn_news_section = NewsSection(
+        business_unit_header=BusinessUnitHeader(header="Retail & Networks", author="Fabian Schomerus", bu_tag=rn_bu_tag),
+        all_news_articles=scrape_all_urls(urls_rn, rn_bu_tag),
+        all_news_websites=store_podcast_and_website_links(rn_bu_tag),
+        bu_tag=rn_bu_tag,
+    )
+    news_document = NewsDocument(news_sections=[rn_news_section])
+
+    if run_cga:
+        cga_bu_tag = BuTag.ER_CGA
+        cga_news_section = NewsSection(
+            business_unit_header=BusinessUnitHeader(header="Central Governments Advisory", author="Harry Allport", bu_tag=cga_bu_tag),
+            all_news_articles=scrape_all_urls(urls_cga, cga_bu_tag),
+            all_news_websites=store_podcast_and_website_links(cga_bu_tag),
+            bu_tag=cga_bu_tag,
+        )
+        news_document.add_section(cga_news_section)
+    return news_document
+
+
 if __name__ == '__main__':
-    data_scraper(True)
+    data_scraper(run_cga=True)

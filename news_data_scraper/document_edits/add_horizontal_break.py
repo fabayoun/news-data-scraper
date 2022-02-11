@@ -2,7 +2,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
 
-def add_page_break(paragraph_before):
+def add_page_break(paragraph_before) -> None:
     """
     Add straight horizontal page break line after previous paragraph
     :param paragraph_before: previous paragraph after which break should be added
