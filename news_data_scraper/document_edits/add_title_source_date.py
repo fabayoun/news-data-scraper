@@ -4,7 +4,7 @@ from docx import Document
 from news_data_scraper.other_document_features.document_feature_classes import NewsSection
 
 
-def add_article(document: Document, section: NewsSection):
+def add_article(document: Document, section: NewsSection) -> None:
     """Add formatted title, source and date to document"
     :param document: document object
     :param section: the section (R&N/CGA to be formatted)

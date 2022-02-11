@@ -32,7 +32,6 @@ def data_scraper(run_cga: bool) -> None:
     document = Document()
     format_document(document, document_contents)
 
-
     # Save document with new version number and current date
     now = datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')
     output_file_name = f"{OUTPUT_FILE_NAME}_{now}.docx"
