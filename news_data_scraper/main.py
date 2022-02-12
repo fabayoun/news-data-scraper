@@ -7,11 +7,9 @@ from news_data_scraper.document.export.word.export_to_word import export_to_word
 from news_data_scraper.scraper.scrape_article import scrape_all_urls
 
 _DIRECTORY_ROOT = Path(__file__).parent.parent
-_INPUT_FILE_PATH = "input/DataScraperINPUT.txt"
-_OUTPUT_FILE_PATH = "output/NewsDataScraperOutput.docx"
 
 
-def scrape_urls_and_create_word_document(run_cga: bool) -> None:
+def scrape_urls_and_create_word_document(run_cga: bool, input_filepath: str, output_filepath: str) -> None:
     """
     Web scraper that creates a word document from url inputs in txt, scrapes title, date and 1st 3 sentences
     :return: document
@@ -19,10 +17,10 @@ def scrape_urls_and_create_word_document(run_cga: bool) -> None:
     setup_logging()
 
     # read txt and create dictionaries of R&N and CGA urls which will be scraped
-    input_file_path = _DIRECTORY_ROOT / _INPUT_FILE_PATH
+    input_file_path = _DIRECTORY_ROOT / input_filepath
     all_articles = scrape_all_urls(input_file_path, run_cga)
 
-    output_file_name = create_document_name(_OUTPUT_FILE_PATH)
+    output_file_name = create_document_name(output_filepath)
     document_contents = create_document_contents(all_articles, output_file_name, run_cga)
 
     full_output_file_path = create_document_filepath(output_file_name)
@@ -41,4 +39,8 @@ def create_document_filepath(output_file_name: str) -> Path:
 
 
 if __name__ == '__main__':
-    scrape_urls_and_create_word_document(run_cga=True)
+    scrape_urls_and_create_word_document(
+        run_cga=True, 
+        input_filepath="input/DataScraperINPUT.txt",
+        output_filepath="output/NewsDataScraperOutput.docx"
+    )
