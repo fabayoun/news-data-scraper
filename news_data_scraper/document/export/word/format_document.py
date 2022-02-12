@@ -6,7 +6,7 @@ from docx import Document
 from news_data_scraper.document.export.word.add_page_headers import add_heading_and_author
 from news_data_scraper.document.export.word.add_title_source_date import add_article
 from news_data_scraper.document.export.word.add_podcasts_and_websites import add_podcast_and_website_links
-from news_data_scraper.document.document_feature_classes import NewsDocument
+from news_data_scraper.document.document_classes import NewsDocument
 from news_data_scraper.scraper.bu_tags import BuTag
 
 

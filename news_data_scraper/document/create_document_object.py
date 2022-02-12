@@ -1,4 +1,4 @@
-from news_data_scraper.document.document_feature_classes import NewsDocument, BusinessUnitSection, BusinessUnitHeader
+from news_data_scraper.document.document_classes import NewsDocument, BusinessUnitSection, BusinessUnitHeader
 from news_data_scraper.document.export.other_document_features.store_website_links import \
     store_podcast_and_website_links
 from news_data_scraper.scraper.bu_tags import BuTag

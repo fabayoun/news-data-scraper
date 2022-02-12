@@ -18,7 +18,7 @@ def document_creator(run_cga: bool) -> None:
     """
     setup_logging()
 
-    # read excel and create dictionaries of R&N and CGA urls which will be scraped
+    # read txt and create dictionaries of R&N and CGA urls which will be scraped
     input_file_path = _DIRECTORY_ROOT / _INPUT_FILE_PATH
     all_articles = scrape_all_urls(input_file_path, run_cga)
 
