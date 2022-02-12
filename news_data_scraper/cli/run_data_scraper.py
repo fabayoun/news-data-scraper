@@ -1,7 +1,7 @@
 import click
 
 from news_data_scraper.cli.generic_errors import common_error_handling
-from news_data_scraper.main import data_scraper
+from news_data_scraper.main import document_creator
 
 _CGA_DEFAULT = True
 
@@ -15,7 +15,7 @@ def run_data_scraper(run_cga: bool) -> None:
     """
     Web scraper that creates a word document from url inputs in excel, scrapes title, date and 1st 3 sentences
     """
-    return data_scraper(run_cga)
+    return document_creator(run_cga)
 
 
 def main() -> None:
