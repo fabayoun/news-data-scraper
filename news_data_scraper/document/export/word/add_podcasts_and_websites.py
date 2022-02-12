@@ -1,9 +1,9 @@
 from docx import Document
 from docx.shared import Pt
 
-from news_data_scraper.document_edits.add_horizontal_break import add_page_break
-from news_data_scraper.document_edits.add_hyperlink import add_hyperlink
-from news_data_scraper.other_document_features.document_feature_classes import BusinessUnitSection
+from news_data_scraper.document.export.word.add_horizontal_break import add_page_break
+from news_data_scraper.document.export.word.add_hyperlink import add_hyperlink
+from news_data_scraper.document.document_feature_classes import BusinessUnitSection
 
 
 def add_podcast_and_website_links(document: Document, section: BusinessUnitSection) -> None:

@@ -1,7 +1,7 @@
 from docx.shared import Pt
 from docx import Document
 
-from news_data_scraper.other_document_features.document_feature_classes import BusinessUnitSection
+from news_data_scraper.document.document_feature_classes import BusinessUnitSection
 
 
 def add_article(document: Document, section: BusinessUnitSection) -> None:
