@@ -1,10 +1,10 @@
 from docx.shared import Pt
 from docx import Document
 
-from news_data_scraper.other_document_features.document_feature_classes import NewsSection
+from news_data_scraper.other_document_features.document_feature_classes import BusinessUnitSection
 
 
-def add_article(document: Document, section: NewsSection) -> None:
+def add_article(document: Document, section: BusinessUnitSection) -> None:
     """Add formatted title, source and date to document"
     :param document: document object
     :param section: the section (R&N/CGA to be formatted)

@@ -10,7 +10,7 @@ from news_data_scraper.scraper.bu_tags import BuTag
 from news_data_scraper.scraper.scraper_classes import NewsArticle, AllNewsArticles
 
 
-def scrape_all_urls(urls: list, bu_tag: BuTag) -> AllNewsArticles:
+def scrape_all_urls(urls: list, bu_tag: BuTag = BuTag.NONE) -> AllNewsArticles:
     all_news_articles = AllNewsArticles()
     for url in urls:
         if isinstance(url, str):
@@ -22,7 +22,7 @@ def scrape_all_urls(urls: list, bu_tag: BuTag) -> AllNewsArticles:
     return all_news_articles
 
 
-def scrape_article_in_url(url: str, bu_tag: BuTag) -> NewsArticle:
+def scrape_article_in_url(url: str, bu_tag: BuTag = BuTag.NONE) -> NewsArticle:
     """
     Scrapes articles based on input 'url' and creates formatted output in given word document. Includes summary text
     :param url: url which will be scraped
