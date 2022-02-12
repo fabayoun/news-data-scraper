@@ -4,11 +4,11 @@ version = "0.1.0"
 description = "A data scraper that takes in urls and produces a formatted word document"
 authors = ["Fabian Schomerus"]
 packages = [
-    { include = "cli" }
+    { include = "news_data_scraper" }
 ]
 
 [tool.poetry.scripts]
-data-scraper = 'cli.run_data_scraper:main'
+data-scraper = 'news_data_scraper.cli.run_data_scraper:main'
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -20,7 +20,7 @@ openpyxl = "^3.0.9"
 docx = "^0.2.4"
 
 [tool.poetry.dev-dependencies]
-
+pytest = "^7.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
