@@ -1,7 +1,7 @@
 import datetime
 from pathlib import Path
 
-from config_logger import setup_logging
+from news_data_scraper.config_logger import setup_logging
 from news_data_scraper.document.create_document_contents import create_document_contents
 from news_data_scraper.document.export.word.export_to_word import export_to_word
 from news_data_scraper.scraper.scrape_article import scrape_all_urls
@@ -40,7 +40,7 @@ def create_document_filepath(output_file_name: str) -> Path:
 
 if __name__ == '__main__':
     scrape_urls_and_create_word_document(
-        run_cga=True, 
+        run_cga=True,
         input_filepath="input/DataScraperINPUT.txt",
         output_filepath="output/NewsDataScraperOutput.docx"
     )
