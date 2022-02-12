@@ -23,15 +23,15 @@ def add_podcast_and_website_links(document: Document, section: BusinessUnitSecti
         add_hyperlink(news_header_para, name, url)
         news_header_para.add_run(" // ")
 
-    # Add "Energy Podcasts: "
+    # Add Podcasts
     podcasts_para = document.add_paragraph()
     podcasts = podcasts_para.add_run("Podcasts: ")
     podcasts.font.size = Pt(11)
     podcasts.font.name = 'Calibri'
     podcasts.bold = True
 
-    # Add Energy Podcasts Links
-    for name, url in section.all_news_websites.news_sites.items():
+    # Add Podcasts Links
+    for name, url in section.all_news_websites.podcast_sites.items():
         add_hyperlink(podcasts_para, name, url)
         podcasts_para.add_run(" // ")
 

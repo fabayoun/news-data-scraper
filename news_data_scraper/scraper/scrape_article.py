@@ -14,29 +14,17 @@ from news_data_scraper.scraper.scraper_classes import NewsArticle, NewsArticles
 
 def scrape_all_urls(input_file_path: Path, run_cga: bool) -> NewsArticles:
     # TODO: Improve input file and logic with scraping R&N and CGA
-    input_url_df = pd.read_excel(input_file_path, sheet_name=0)
-    urls_rn = input_url_df['RN News'].to_list()
-    urls_cga = input_url_df['CGA News'].to_list()
+    input_url_df = pd.read_csv(input_file_path, sep="|")
 
     all_news_articles = NewsArticles()
-
-    bu_tag = BuTag.ER_RN
-    for url in urls_rn:
-        if isinstance(url, str):
-            all_news_articles.articles.append(scrape_article_in_url(url, bu_tag))
-        elif math.isnan(url):
+    for index, row in input_url_df.iterrows():
+        if isinstance(row['Url'], str):
+            all_news_articles.articles.append(scrape_article_in_url(row['Url'], row['BusinessUnit']))
+        elif math.isnan(row['Url']):
             logging.info("Cell contains no link")
         else:
             logging.error("input was neither a url string or NaN")
-    if run_cga:
-        bu_tag = BuTag.ER_CGA
-        for url in urls_cga:
-            if isinstance(url, str):
-                all_news_articles.articles.append(scrape_article_in_url(url, bu_tag))
-            elif math.isnan(url):
-                logging.info("Cell contains no link")
-            else:
-                logging.error("input was neither a url string or NaN")
+    x = all_news_articles
     return all_news_articles
 
 

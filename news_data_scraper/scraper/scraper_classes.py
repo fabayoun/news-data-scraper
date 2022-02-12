@@ -19,3 +19,5 @@ class NewsArticle:
 class NewsArticles:
     """Class containing all scraped news articles"""
     articles: List[NewsArticle] = field(default_factory=list)
+
+

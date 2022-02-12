@@ -7,7 +7,7 @@ from news_data_scraper.document.export.word.format_document import export_to_wor
 from news_data_scraper.scraper.scrape_article import scrape_all_urls
 
 DIRECTORY_ROOT = Path(__file__).parent.parent
-INPUT_FILE_PATH = "input/DataScraperINPUT.xlsx"
+INPUT_FILE_PATH = "input/DataScraperINPUT.txt"
 OUTPUT_FILE_PATH = "output/NewsDataScraperOutput.docx"
 
 
