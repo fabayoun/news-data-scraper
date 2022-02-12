@@ -1,7 +1,7 @@
 from docx.shared import Pt
 from docx import Document
 
-from news_data_scraper.other_document_features.document_feature_classes import NewsDocument, BusinessUnitSection
+from news_data_scraper.document.document_classes import BusinessUnitSection
 
 
 def add_heading_and_author(document: Document, section: BusinessUnitSection):

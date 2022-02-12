@@ -1,9 +1,9 @@
 from docx import Document
 from docx.shared import Pt
 
-from news_data_scraper.document_edits.add_horizontal_break import add_page_break
-from news_data_scraper.document_edits.add_hyperlink import add_hyperlink
-from news_data_scraper.other_document_features.document_feature_classes import BusinessUnitSection
+from news_data_scraper.document.export.word.add_horizontal_break import add_page_break
+from news_data_scraper.document.export.word.add_hyperlink import add_hyperlink
+from news_data_scraper.document.document_classes import BusinessUnitSection
 
 
 def add_podcast_and_website_links(document: Document, section: BusinessUnitSection) -> None:
@@ -23,15 +23,15 @@ def add_podcast_and_website_links(document: Document, section: BusinessUnitSecti
         add_hyperlink(news_header_para, name, url)
         news_header_para.add_run(" // ")
 
-    # Add "Energy Podcasts: "
+    # Add Podcasts
     podcasts_para = document.add_paragraph()
     podcasts = podcasts_para.add_run("Podcasts: ")
     podcasts.font.size = Pt(11)
     podcasts.font.name = 'Calibri'
     podcasts.bold = True
 
-    # Add Energy Podcasts Links
-    for name, url in section.all_news_websites.news_sites.items():
+    # Add Podcasts Links
+    for name, url in section.all_news_websites.podcast_sites.items():
         add_hyperlink(podcasts_para, name, url)
         podcasts_para.add_run(" // ")
 

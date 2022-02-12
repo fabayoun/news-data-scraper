@@ -1,7 +1,7 @@
 import re
 
 # dictionary which defines source, based on url. Useful for creating formatted source
-dict_source = {
+URL_TO_NEW_SOURCE = {
     "current-news": "Current News",
     "thesun": "The Sun",
     "bbc": "BBC",
@@ -62,7 +62,7 @@ def get_source(url):
     else:
         check_source = url
 
-    if check_source in dict_source:
-        return dict_source[check_source]
+    if check_source in URL_TO_NEW_SOURCE:
+        return URL_TO_NEW_SOURCE[check_source]
     else:
         return "Source"

@@ -1,0 +1,8 @@
+BusinessUnit|Url
+ER-RN|https://theenergyst.com/evs-range-anxiety-the-least-of-fleet-operators-concerns/
+ER-RN|https://theenergyst.com/ofgem-tightens-up-gas-and-power-transmission-spending-networks-aghast/ 
+ER-RN|https://www.theguardian.com/business/2020/jun/29/make-covid-19-support-for-vulnerable-energy-customers-permanent-ofgem-tells-suppliers
+ER-RN|https://utilityweek.co.uk/unions-slam-centrica-over-contract-negotiations/
+ER-RN|https://utilityweek.co.uk/shell-launches-solar-storage-tariff/
+ER-RN|https://utilityweek.co.uk/utilities-lag-behind-other-sectors-for-customer-satisfaction/
+ER-CGA|https://utilityweek.co.uk/weekend-press-round-water-bosses-showered-big-payouts/

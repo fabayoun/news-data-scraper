@@ -1,24 +1,30 @@
 import logging
 import math
 import re
+from pathlib import Path
 
+import pandas as pd
 from newspaper import Article
 
 from news_data_scraper.scraper.get_source import get_source
 from news_data_scraper.scraper.article_download_state import ArticleDownloadState
 from news_data_scraper.scraper.bu_tags import BuTag
-from news_data_scraper.scraper.scraper_classes import NewsArticle, AllNewsArticles
+from news_data_scraper.scraper.scraper_classes import NewsArticle, NewsArticles
 
 
-def scrape_all_urls(urls: list, bu_tag: BuTag = BuTag.NONE) -> AllNewsArticles:
-    all_news_articles = AllNewsArticles()
-    for url in urls:
-        if isinstance(url, str):
-            all_news_articles.articles.append(scrape_article_in_url(url, bu_tag))
-        elif math.isnan(url):
+def scrape_all_urls(input_file_path: Path, run_cga: bool) -> NewsArticles:
+    # TODO: Improve input file and logic with scraping R&N and CGA
+    input_url_df = pd.read_csv(input_file_path, sep="|")
+
+    all_news_articles = NewsArticles()
+    for index, row in input_url_df.iterrows():
+        if isinstance(row['Url'], str):
+            all_news_articles.articles.append(scrape_article_in_url(row['Url'], row['BusinessUnit']))
+        elif math.isnan(row['Url']):
             logging.info("Cell contains no link")
         else:
             logging.error("input was neither a url string or NaN")
+    x = all_news_articles
     return all_news_articles
 
 
