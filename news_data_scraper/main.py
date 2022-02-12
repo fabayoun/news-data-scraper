@@ -11,7 +11,7 @@ _INPUT_FILE_PATH = "input/DataScraperINPUT.txt"
 _OUTPUT_FILE_PATH = "output/NewsDataScraperOutput.docx"
 
 
-def document_creator(run_cga: bool) -> None:
+def scrape_urls_and_create_word_document(run_cga: bool) -> None:
     """
     Web scraper that creates a word document from url inputs in txt, scrapes title, date and 1st 3 sentences
     :return: document
@@ -41,4 +41,4 @@ def create_document_filepath(output_file_name: str) -> Path:
 
 
 if __name__ == '__main__':
-    document_creator(run_cga=True)
+    scrape_urls_and_create_word_document(run_cga=True)
