@@ -26,13 +26,16 @@ def document_creator(run_cga: bool) -> None:
     setup_logging()
 
     # read excel and create dictionaries of R&N and CGA urls which will be scraped
+    # TODO: Split out scraping
     document_contents = create_document_contents(run_cga)
 
     # Create word document
+    # TODO: Export to word function
     document = Document()
     format_document(document, document_contents)
 
     # Save document with new version number and current date
+    # TODO: Create generate_filename function, which is sent into export to word, document contents and file path
     now = datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')
     output_file_name = f"{OUTPUT_FILE_NAME}_{now}.docx"
     file_path_email = f"{DIRECTORY_ROOT}/{output_file_name}"
