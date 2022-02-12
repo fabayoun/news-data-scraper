@@ -2,7 +2,7 @@ import datetime
 from pathlib import Path
 
 from config_logger import setup_logging
-from news_data_scraper.document.create_document_object import create_document_contents
+from news_data_scraper.document.create_document_contents import create_document_contents
 from news_data_scraper.document.export.word.format_document import export_to_word
 from news_data_scraper.scraper.scrape_article import scrape_all_urls
 
