@@ -1,7 +1,7 @@
 import pytest
 
 from news_data_scraper.scraper.scrape_article import scrape_all_urls, scrape_article_in_url
-from news_data_scraper.scraper.scraper_classes import NewsArticle
+from news_data_scraper.scraper.domain import NewsArticle
 
 
 @pytest.fixture

@@ -25,13 +25,10 @@ def scrape_urls_and_create_word_document(run_cga: bool, input_filepath: str, out
 
     full_output_file_path = create_document_filepath(output_file_name)
     export_to_word(document_contents, output_file_name, full_output_file_path)
-    pass
 
 
 def create_document_name(output_file_name: str) -> str:
-    now = datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')
-    output_file_name = f"{output_file_name.replace('.docx', '')}_{now}.docx"
-    return output_file_name
+    return f"{output_file_name.replace('.docx', '')}_{datetime.datetime.now().strftime('%Y%m%d_%Hh%Mm')}.docx"
 
 
 def create_document_filepath(output_file_name: str) -> Path:

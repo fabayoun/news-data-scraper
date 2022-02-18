@@ -1,8 +1,8 @@
-from news_data_scraper.document.document_classes import NewsDocument, BusinessUnitSection, BusinessUnitHeader
+from news_data_scraper.document.domain import NewsDocument, BusinessUnitSection, BusinessUnitHeader
 from news_data_scraper.document.store_website_links import \
     store_podcast_and_website_links
 from news_data_scraper.scraper.bu_tags import BuTag
-from news_data_scraper.scraper.scraper_classes import NewsArticles
+from news_data_scraper.scraper.domain import NewsArticles
 
 
 def create_document_contents(all_articles: NewsArticles, output_file_name: str, run_cga: bool) -> NewsDocument:

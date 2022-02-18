@@ -1,4 +1,4 @@
-from news_data_scraper.document.document_classes import NewsWebsites
+from news_data_scraper.document.domain import NewsWebsites
 from news_data_scraper.scraper.bu_tags import BuTag
 
 _ENERGY_NEWS_NAME_TO_URL = {

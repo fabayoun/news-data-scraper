@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict
 
 from news_data_scraper.scraper.bu_tags import BuTag
-from news_data_scraper.scraper.scraper_classes import NewsArticles
+from news_data_scraper.scraper.domain import NewsArticles
 
 
 @dataclass

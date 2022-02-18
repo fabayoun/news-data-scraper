@@ -9,7 +9,7 @@ from newspaper import Article
 from news_data_scraper.scraper.get_source import get_source
 from news_data_scraper.scraper.article_download_state import ArticleDownloadState
 from news_data_scraper.scraper.bu_tags import BuTag
-from news_data_scraper.scraper.scraper_classes import NewsArticle, NewsArticles
+from news_data_scraper.scraper.domain import NewsArticle, NewsArticles
 
 
 def scrape_all_urls(input_file_path: Path, run_cga: bool) -> NewsArticles:
