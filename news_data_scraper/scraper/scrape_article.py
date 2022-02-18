@@ -37,34 +37,31 @@ def scrape_article_in_url(url: str, bu_tag: BuTag = BuTag.NONE) -> NewsArticle:
     """
     scraped_article = Article(url)
     scraped_article.download()
-    article_download_state = scraped_article.download_state
 
-    if article_download_state == ArticleDownloadState.SUCCESS:
-        scraped_article.parse()
-
-        if scraped_article.publish_date is None:
-            date_str = "No Date"
-        else:
-            date_only = scraped_article.publish_date.date()
-            date_str = date_only.strftime('%d/%m/%Y')
-
-
-        sentence_list = re.findall(r'.+', scraped_article.text)
-        if len(sentence_list) > 3:
-            three_sentences = [sentence_list[0], sentence_list[1], sentence_list[2]]
-            sentences = ". ".join(three_sentences)
-
-        else:
-            sentences = scraped_article.text
-
-        return NewsArticle(
-            bu_tag=bu_tag,
-            title=scraped_article.title,
-            source=get_source(url),
-            date=date_str,
-            text=sentences,
-            url=url
-        )
-    else:
+    if scraped_article.download_state == ArticleDownloadState.FAILED_RESPONSE:
         logging.error(f"Failed Download: {url}")
         return NewsArticle(bu_tag=bu_tag)
+
+    scraped_article.parse()
+
+    if scraped_article.publish_date is None:
+        date_str = "No Date"
+    else:
+        date_only = scraped_article.publish_date.date()
+        date_str = date_only.strftime('%d/%m/%Y')
+
+    sentence_list = re.findall(r'.+', scraped_article.text)
+    if len(sentence_list) > 3:
+        three_sentences = [sentence_list[0], sentence_list[1], sentence_list[2]]
+        sentences = ". ".join(three_sentences)
+    else:
+        sentences = scraped_article.text
+
+    return NewsArticle(
+        bu_tag=bu_tag,
+        title=scraped_article.title,
+        source=get_source(url),
+        date=date_str,
+        text=sentences,
+        url=url
+    )
