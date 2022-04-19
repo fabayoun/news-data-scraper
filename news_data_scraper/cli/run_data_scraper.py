@@ -7,7 +7,7 @@ from news_data_scraper.main import scrape_urls_and_create_word_document
 
 _CGA_DEFAULT = True
 _INPUT_FILEPATH_FROM_DIRECTORY = "input/DataScraperINPUT.txt"
-_OUTPUT_FILEPATH_FROM_DIRECTORY = "output/NewsDataScraperOutput.docx"
+_OUTPUT_FILEPATH_FROM_DIRECTORY = "NewsDataScraperOutput.docx"
 
 
 @click.command()
