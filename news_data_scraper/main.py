@@ -42,5 +42,5 @@ if __name__ == '__main__':
     scrape_urls_and_create_word_document(
         run_cga=True,
         input_filepath="input/DataScraperINPUT.txt",
-        output_filepath="output/NewsDataScraperOutput.docx"
+        output_filepath="NewsDataScraperOutput.docx"
     )
