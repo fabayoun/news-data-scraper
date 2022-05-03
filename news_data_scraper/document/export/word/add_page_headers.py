@@ -15,12 +15,12 @@ def add_heading_and_author(document: Document, section: BusinessUnitSection):
     # Add BU Header
     header_cga = document.add_paragraph().add_run(section.header.header)
     header_cga.font.size = Pt(15)
-    header_cga.font.name = 'Calibri'
+    header_cga.font.name = "Calibri"
     header_cga.bold = True
 
     # Add CGA Author
     author_cga = document.add_paragraph().add_run(section.header.author)
     author_cga.font.size = Pt(11)
-    author_cga.font.name = 'Calibri'
+    author_cga.font.name = "Calibri"
 
     document.add_paragraph()

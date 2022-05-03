@@ -18,9 +18,11 @@ def scrape_all_urls(input_file_path: Path, run_cga: bool) -> NewsArticles:
 
     all_news_articles = NewsArticles()
     for index, row in input_url_df.iterrows():
-        if isinstance(row['Url'], str):
-            all_news_articles.articles.append(scrape_article_in_url(row['Url'], row['BusinessUnit']))
-        elif math.isnan(row['Url']):
+        if isinstance(row["Url"], str):
+            all_news_articles.articles.append(
+                scrape_article_in_url(row["Url"], row["BusinessUnit"])
+            )
+        elif math.isnan(row["Url"]):
             logging.info("Cell contains no link")
         else:
             logging.error("input was neither a url string or NaN")
@@ -46,10 +48,9 @@ def scrape_article_in_url(url: str, bu_tag: BuTag = BuTag.NONE) -> NewsArticle:
             date_str = "No Date"
         else:
             date_only = scraped_article.publish_date.date()
-            date_str = date_only.strftime('%d/%m/%Y')
+            date_str = date_only.strftime("%d/%m/%Y")
 
-
-        sentence_list = re.findall(r'.+', scraped_article.text)
+        sentence_list = re.findall(r".+", scraped_article.text)
         if len(sentence_list) > 3:
             three_sentences = [sentence_list[0], sentence_list[1], sentence_list[2]]
             sentences = ". ".join(three_sentences)
@@ -63,7 +64,7 @@ def scrape_article_in_url(url: str, bu_tag: BuTag = BuTag.NONE) -> NewsArticle:
             source=get_source(url),
             date=date_str,
             text=sentences,
-            url=url
+            url=url,
         )
     else:
         logging.error(f"Failed Download: {url}")

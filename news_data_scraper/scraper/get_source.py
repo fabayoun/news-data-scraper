@@ -38,7 +38,7 @@ URL_TO_NEW_SOURCE = {
     "energyvoice": "Energy Voice",
     "ofwat": "Ofwat",
     "forbes": "Forbes",
-    "theregister": "The Register"
+    "theregister": "The Register",
 }
 
 
