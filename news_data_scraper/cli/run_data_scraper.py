@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import click
 
 from news_data_scraper.cli.generic_errors import common_error_handling

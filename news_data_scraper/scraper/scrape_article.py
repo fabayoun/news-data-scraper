@@ -26,7 +26,6 @@ def scrape_all_urls(input_file_path: Path, run_cga: bool) -> NewsArticles:
             logging.info("Cell contains no link")
         else:
             logging.error("input was neither a url string or NaN")
-    x = all_news_articles
     return all_news_articles
 
 

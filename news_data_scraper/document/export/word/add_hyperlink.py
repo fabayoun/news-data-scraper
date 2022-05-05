@@ -1,9 +1,7 @@
 import docx
 from docx import Document
 from docx.shared import Pt
-from docx.oxml import OxmlElement
 from docx.enum.dml import MSO_THEME_COLOR_INDEX
-from docx.opc import constants
 
 
 def add_hyperlink(paragraph: Document, text: str, url: str) -> None:
