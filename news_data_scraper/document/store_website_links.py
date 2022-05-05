@@ -39,9 +39,17 @@ def store_podcast_and_website_links(bu_tag: BuTag) -> NewsWebsites:
     """
     # Add "Energy News: "
     if bu_tag == BuTag.ER_RN:
-        return NewsWebsites(news_sites=_ENERGY_NEWS_NAME_TO_URL, podcast_sites=_ENERGY_PODCASTS_NAME_TO_URL, bu_tag=bu_tag)
+        return NewsWebsites(
+            news_sites=_ENERGY_NEWS_NAME_TO_URL,
+            podcast_sites=_ENERGY_PODCASTS_NAME_TO_URL,
+            bu_tag=bu_tag,
+        )
     elif bu_tag == BuTag.ER_CGA:
-        return NewsWebsites(news_sites=_CGA_NEWS_NAME_TO_URL, podcast_sites=_CGA_PODCASTS_NAME_TO_URL, bu_tag=bu_tag)
+        return NewsWebsites(
+            news_sites=_CGA_NEWS_NAME_TO_URL,
+            podcast_sites=_CGA_PODCASTS_NAME_TO_URL,
+            bu_tag=bu_tag,
+        )
     elif bu_tag == BuTag.NONE:
         return NewsWebsites()
     else:

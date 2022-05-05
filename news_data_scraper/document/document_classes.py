@@ -8,6 +8,7 @@ from news_data_scraper.scraper.scraper_classes import NewsArticles
 @dataclass
 class BusinessUnitHeader:
     """Class for business unit headers which are used to divide the articles into sections"""
+
     header: str
     author: str
     bu_tag: BuTag = BuTag.NONE
@@ -16,6 +17,7 @@ class BusinessUnitHeader:
 @dataclass
 class NewsWebsites:
     """Class containing all News Websites"""
+
     news_sites: Dict[str, str] = field(default_factory=dict)
     podcast_sites: Dict[str, str] = field(default_factory=dict)
     bu_tag: BuTag = BuTag.NONE
@@ -24,6 +26,7 @@ class NewsWebsites:
 @dataclass
 class BusinessUnitSection:
     """Class containing all document features"""
+
     header: BusinessUnitHeader
     all_news_articles: NewsArticles
     all_news_websites: NewsWebsites
